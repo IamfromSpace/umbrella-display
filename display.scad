@@ -24,14 +24,14 @@ module display(
   for(y = [0:rows - 1])
     for(x = [0:columns - 1])
       translate([x * column_dist, y * row_dist, 0])
-        pip(25,15,10,2,1,tolerance); // TODO: Parameterize
+        pip(20,25,10,2,2,tolerance); // TODO: Parameterize
 }
 
 display(
-  3, // rows
-  4, // columns
-  40, // row_dist
-  30, // column_dist
+  9, // rows
+  7, // columns
+  31.75, // row_dist
+  46.0375, // column_dist
   0.3, // tolerance
   $fn=30
 );

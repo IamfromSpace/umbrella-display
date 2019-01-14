@@ -26,7 +26,7 @@ pip(
   10, // height
   10, // width
   2, // wall_width
-  1, // pick_diameter
+  2, // pick_diameter
   0.3, // tolerance
   $fn=30
 );
