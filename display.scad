@@ -13,13 +13,13 @@ module display(
   tolerance // Room for error
 ) {
   for(i = [0:rows - 1])
-    translate([-column_dist, i * row_dist, 0])
-      link(5, 10, column_dist * (columns + 1), tolerance); // TODO: Parameterize
+    translate([-column_dist / 2, i * row_dist, 0])
+      link(5, 10, column_dist * columns, tolerance); // TODO: Parameterize
 
   for(i = [0:columns - 1])
-    translate([i * column_dist, -row_dist, 0])
+    translate([i * column_dist, -row_dist / 2, 0])
       rotate([0, 0, 90])
-        link(5, 10, row_dist * (rows + 1), tolerance); // TODO: Parameterize
+        link(5, 10, row_dist * rows, tolerance); // TODO: Parameterize
 
   for(y = [0:rows - 1])
     for(x = [0:columns - 1])
