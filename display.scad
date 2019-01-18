@@ -44,7 +44,7 @@ module display(
   for(y = [0:rows - 1])
     for(x = [0:columns - 1])
       translate([x * column_dist, y * row_dist, 0])
-        pip(20,25,10,2,2,tolerance); // TODO: Parameterize
+        pip(17,20,1,2.5,tolerance); // TODO: Parameterize
 }
 
 display(
