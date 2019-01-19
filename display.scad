@@ -19,23 +19,23 @@ module display(
   tolerance // Room for error
 ) {
   for(i = [0:rows - 1])
-    translate([has_left_connectors ? -column_dist / 2 : 0, i * row_dist, 0])
+    translate([-column_dist / 2, i * row_dist, 0])
       link(
         5,
         10,
-        column_dist * (columns - (i(!has_left_connectors) + i(!has_right_connectors)) / 2),
+        column_dist * columns,
         has_left_connectors,
         has_right_connectors,
         tolerance
       ); // TODO: Parameterize
 
   for(i = [0:columns - 1])
-    translate([i * column_dist, has_bottom_connectors ? -row_dist / 2 : 0, 0])
+    translate([i * column_dist, -row_dist / 2, 0])
       rotate([0, 0, 90])
         link(
           5,
           10,
-          row_dist * (rows - (i(!has_bottom_connectors) + i(!has_top_connectors)) / 2),
+          row_dist * rows,
           has_bottom_connectors,
           has_top_connectors,
           tolerance
