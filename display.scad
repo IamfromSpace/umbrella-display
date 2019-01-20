@@ -16,6 +16,7 @@ module display(
   has_bottom_connectors,
   has_left_connectors,
   has_right_connectors,
+  lean_first, // should the "front" pip lean like the others?
   tolerance // Room for error
 ) {
   for(i = [0:rows - 1])
@@ -46,7 +47,7 @@ module display(
       translate([x * column_dist, y * row_dist, 0])
         // the first row stands straight up
         rotate([0, 0, 180])
-          pip(y == 0 ? 0 : 17, 20, 1, 2.5, tolerance); // TODO: Parameterize
+          pip(lean_first && y == 0 ? 0 : 17, 20, 1, 2.5, tolerance); // TODO: Parameterize
 }
 
 display(
@@ -58,6 +59,7 @@ display(
   false, // has_bottom_connectors
   false, // has_left_connectors
   true, // has_right_connectors
+  true, // lean_first
   0.3, // tolerance
   $fn=30
 );

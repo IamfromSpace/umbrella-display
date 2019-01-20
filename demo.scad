@@ -33,6 +33,7 @@ module demo()
       false, // has_bottom_connectors
       false, // has_left_connectors
       false, // has_right_connectors
+      true, // lean_first
       0.3, // tolerance
       $fn=30
     );
