@@ -39,9 +39,9 @@ module demo()
     for(y = [0:rows - 1])
       for(x = [0:columns - 1])
         // fudging the math on the umbrella offset from rotation
-        translate([x * column_dist, y * row_dist + (y == (rows - 1) ? 0 : 7), 0])
-          rotate([y == (rows - 1) ? 0 : 20,0,0])
-            umbrella(y == (rows - 1) ? 50 : 15);
+        translate([x * column_dist, y * row_dist + (y == 0 ? 0 : -6), 0])
+          rotate([y == 0 ? 0 : -17, 0, 0])
+            umbrella(y == 0 ? 50 : 15);
   }
 }
 
