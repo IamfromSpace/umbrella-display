@@ -7,21 +7,25 @@ use <display.scad>
 
 module demo()
 {
-  row_dist = 28.09875;
-  column_dist = 47.625;
+  width = 382.5875;
+  height = 280.9875;
+  rows = 9;
+  columns = 5;
+  row_dist = height / rows;
+  column_dist = width / columns;
 
   drawer( // this should all be measured for real
     40,
-    7 * column_dist,
-    row_dist * 9,
+    width,
+    height,
     5,
     70,
     20
   );
   translate([column_dist / 2, row_dist / 2])
     display(
-      9, // rows
-      7, // columns
+      rows,
+      columns,
       row_dist,
       column_dist,
       false, // has_top_connectors

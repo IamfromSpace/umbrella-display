@@ -49,9 +49,9 @@ module display(
 
 display(
   9, // rows
-  7, // columns
-  28.09875, // row_dist
-  47.625, // column_dist
+  5, // columns
+  31.2208333, // row_dist
+  76.5175, // column_dist
   true, // has_top_connectors
   false, // has_bottom_connectors
   false, // has_left_connectors
