@@ -2,6 +2,7 @@
  * Copyright 2018 Nathan Fairhurst.
  */
 
+use <umbrella.scad>
 use <drawer.scad>
 use <display.scad>
 
@@ -22,7 +23,7 @@ module demo()
     70,
     20
   );
-  translate([column_dist / 2, row_dist / 2])
+  translate([column_dist / 2, row_dist / 2]) {
     display(
       rows,
       columns,
@@ -35,6 +36,13 @@ module demo()
       0.3, // tolerance
       $fn=30
     );
+    for(y = [0:rows - 1])
+      for(x = [0:columns - 1])
+        // fudging the math on the umbrella offset from rotation
+        translate([x * column_dist, y * row_dist + (y == (rows - 1) ? 0 : 7), 0])
+          rotate([y == (rows - 1) ? 0 : 20,0,0])
+            umbrella(y == (rows - 1) ? 50 : 15);
+  }
 }
 
 demo();
