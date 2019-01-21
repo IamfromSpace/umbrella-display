@@ -7,10 +7,14 @@ module male(
   width, // width of the entire piece
   tolerance // Room for error
 ) {
-  translate([0,0, -tolerance / 2])
-    union()
-      cylinder(height / 2 + tolerance, width / 2 + tolerance, width / 2 + tolerance);
-      cylinder(height + tolerance, width / 4 + tolerance, width / 4 + tolerance);
+  translate([0,0, -tolerance / 2]) {
+    difference() {
+      cylinder(height + tolerance, width / 2 + tolerance, width / 2 + tolerance);
+      translate([-(width + tolerance) / 2, -width * 1 / 10 + tolerance, -(height + tolerance) / 2])
+        cube([width + tolerance, width + tolerance, (height + tolerance) * 2]);
+    }
+    cylinder(height + tolerance, width / 5 + tolerance, width / 5 + tolerance);
+  }
 }
 
 module link(
@@ -23,10 +27,21 @@ module link(
 ) {
   difference() {
     union() {
-      if (has_male)
+      if (has_male) 
         male(height, width, 0);
-      translate([0, -width / 4, 0])
-        cube([arm_length, width / 2, height / 2]);
+      difference() {
+        union() {
+          translate([0, -width / 4, 0])
+            cube([arm_length, width / 2, height / 2]);
+          if (has_male)
+            translate([0, -width / 4, 0])
+              cube([width, width / 2, height]);
+        }
+        if (has_male) {
+          translate([0, 0, -height / 2])
+            cylinder(height * 2, width / 2, width / 2);
+        }
+      }
       if (has_female) {
         translate([arm_length, 0, 0])
           cylinder(height, width / 2, width / 2);
